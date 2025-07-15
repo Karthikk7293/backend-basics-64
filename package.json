@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "name": "server",
+  "version": "1.0.0",
+  "description": "basic backend app",
+  "main": "server.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "karthik",
+  "license": "ISC"
+}
