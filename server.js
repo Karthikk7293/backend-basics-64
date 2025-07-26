@@ -1,6 +1,10 @@
 import express from 'express'
 import cartRouter from './routes/cartRoutes.js'
 import userRouter from './routes/userRoutes.js'
+import { configDotenv } from 'dotenv'
+import connectDatabase from './config/database.js'
+configDotenv()
+connectDatabase()
 
 const app = express()
 
@@ -16,7 +20,7 @@ app.use((error, req, res, next) => {
     res.status(500).json({ error: error.message })
 })
 
-app.listen(3000, () => {
-    console.log('server is running........');
+app.listen(process.env.PORT, () => {
+    console.log(`server is running on ${process.env.PORT}........`);
 
 })

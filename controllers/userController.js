@@ -8,7 +8,7 @@ export const createUser = asyncHandler(async (req, res) => {
 
     const text = `name:${name} email:${email} password:${password}`
 
-    const response = await createUserService('user.txt', text)
+    const response = await createUserService('user.txt', req.body)
 
     if (response.success) {
         return res.status(201).json({ success: true, message: "user created successfully!" })
