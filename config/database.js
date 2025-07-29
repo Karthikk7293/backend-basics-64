@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 const connectDatabase = () => {
     try {
-        mongoose.connect('mongodb://localhost:27017/testdatabase').then((res) => {
+        mongoose.connect(`${process.env.CLOUD_MONGO_URI}/${process.env.DB_NAME}`).then((res) => {
             // console.log(res);
             console.log("database connected successfully!");
 
@@ -12,6 +12,7 @@ const connectDatabase = () => {
 
         })
     } catch (error) {
+        console.log(error);
 
     }
 }

@@ -16,7 +16,7 @@ app.use('/api/user', userRouter)
 
 // error middleware 
 app.use((error, req, res, next) => {
-    console.log(error.stack);
+    console.log(error.stack, "------------------");
     res.status(500).json({ error: error.message })
 })
 

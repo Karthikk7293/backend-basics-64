@@ -1,11 +1,13 @@
 import { promises as fs } from 'fs'
 import User from '../models/user.js'
+import Product from '../models/products.js';
 
 export const createUserService = async (file, data) => {
     console.log(data);
 
     const newUserDetails = new User(data)
     const result = await newUserDetails.save()
+
 
     console.log(result);
 
