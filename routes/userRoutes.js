@@ -1,17 +1,19 @@
 import { Router } from "express"
-import { createUser } from "../controllers/userController.js";
-import { handleValidateUserSignIn } from "../middlewares/userMiddleware.js";
+import { createUser, updateUserDetails, getAllUsers, getUserDetails, deleteUser } from "../controllers/userController.js";
+import { handleUserParams, handleValidateUserSignIn, } from "../middlewares/userMiddleware.js";
 
 const router = Router()
 
 router.route('/').get((req, res) => {
     console.log("this is a user api ");
-
     res.json({ message: "response from user api" })
-
 })
 
 router.route('/sign-in').post(handleValidateUserSignIn, createUser)
+router.route('/update-user/:userId').put(handleUserParams, handleValidateUserSignIn, updateUserDetails)
+router.route('/get-all-users').get(getAllUsers)
+router.route('/user-details/:userId').get(handleUserParams, getUserDetails)
+router.route('/delete-user/:userId').delete(handleUserParams, deleteUser)
 
 
 export default router
