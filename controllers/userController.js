@@ -1,5 +1,5 @@
 import { asyncHandler } from "../middlewares/asyncHandler.js"
-import { createUserService, updateUserDetailsServce, getAllUsersService, getUserWithId, deleteUserService } from "../services/userServices.js"
+import { createUserService, updateUserDetailsServce, getAllUsersService, getUserWithId, deleteUserService, createSampleUsers, filterUsers } from "../services/userServices.js"
 
 export const createUser = asyncHandler(async (req, res) => {
 
@@ -35,7 +35,7 @@ export const updateUserDetails = asyncHandler(async (req, res) => {
 
 export const getAllUsers = asyncHandler(async (req, res) => {
 
-    const allUsers = await getAllUsersService()
+    const allUsers = await filterUsers()
 
     res.status(200).json({ success: true, allUsers })
 })
