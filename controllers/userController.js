@@ -1,14 +1,42 @@
+import jwt from "jsonwebtoken";
 import { asyncHandler } from "../middlewares/asyncHandler.js"
-import { createUserService, updateUserDetailsServce, getAllUsersService, getUserWithId, deleteUserService, createSampleUsers, filterUsers } from "../services/userServices.js"
+import { createUserService, updateUserDetailsServce, getAllUsersService, getUserWithId, deleteUserService, createSampleUsers, filterUsers, getUserDetailsWithEmail } from "../services/userServices.js"
+import bcrypt from "bcryptjs";
 
+// login user
+export const loginUser = asyncHandler(async (req, res) => {
+    const { email, password } = req.body
+    const user = await getUserDetailsWithEmail(email)
+    if (!user) {
+        return res.status(400).json({ success: false, message: "user not exist!" })
+    }
+
+    const isValidUser = await bcrypt.compare(password, user.password)
+
+    console.log(isValidUser);
+
+    if (!isValidUser) {
+        return res.status(400).json({ success: false, message: "wrong password" })
+    }
+    console.log(user);
+
+    const token = jwt.sign({ name: user.name, email: user.email, id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: '1h'
+    })
+
+    res.status(200).json({ success: true, token })
+
+})
+
+// sign in user 
 export const createUser = asyncHandler(async (req, res) => {
 
     const { name, email, password } = req.body
 
 
-    const text = `name:${name} email:${email} password:${password}`
+    const updatedPassword = await bcrypt.hash(password, 10)
 
-    const response = await createUserService('user.txt', req.body)
+    const response = await createUserService('user.txt', { email, name, password: updatedPassword })
 
     if (response.success) {
         return res.status(201).json({ success: true, message: "user created successfully!" })
@@ -34,6 +62,9 @@ export const updateUserDetails = asyncHandler(async (req, res) => {
 })
 
 export const getAllUsers = asyncHandler(async (req, res) => {
+
+    console.log("user details", req.user);
+
 
     const allUsers = await filterUsers()
 
