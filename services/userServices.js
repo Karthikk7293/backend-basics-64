@@ -1,13 +1,13 @@
 import User from '../models/user.js'
 
 
-export const createUserService = async (file, data) => {
+export const createUserService = async (data) => {
 
     const newUserDetails = new User(data)
     const result = await newUserDetails.save()
     console.log(result);
 
-    return { success: true }
+    return { success: true, result }
 
 }
 
@@ -132,7 +132,7 @@ export const filterUsers = async () => {
                 $skip: 2
             },
             {
-                $limit: 2
+                $limit: 20
             }
         ])
 

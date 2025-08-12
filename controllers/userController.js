@@ -20,7 +20,7 @@ export const loginUser = asyncHandler(async (req, res) => {
     }
     console.log(user);
 
-    const token = jwt.sign({ name: user.name, email: user.email, id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ name: user.name, email: user.email, id: user._id, role: user.role }, process.env.JWT_SECRET, {
         expiresIn: '1h'
     })
 
@@ -31,15 +31,15 @@ export const loginUser = asyncHandler(async (req, res) => {
 // sign in user 
 export const createUser = asyncHandler(async (req, res) => {
 
-    const { name, email, password } = req.body
+    const { name, email, password, role } = req.body
 
 
     const updatedPassword = await bcrypt.hash(password, 10)
 
-    const response = await createUserService('user.txt', { email, name, password: updatedPassword })
+    const response = await createUserService({ email, name, password: updatedPassword, role })
 
     if (response.success) {
-        return res.status(201).json({ success: true, message: "user created successfully!" })
+        return res.status(201).json(response)
     } else {
         return new Error("failed to create new user!")
     }

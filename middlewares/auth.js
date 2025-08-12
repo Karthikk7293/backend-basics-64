@@ -27,3 +27,18 @@ export const handleAuth = async (req, res, next) => {
         res.status(500).json({ success: false, message: "server error" })
     }
 }
+
+export const handleRoles = (roles) => {
+
+    return (req, res, next) => {
+
+        if (!roles.includes(req.user.role)) {
+
+            return res.status(403).json({ success: false, message: "access denied!" })
+        }
+
+        next()
+    }
+
+
+}
