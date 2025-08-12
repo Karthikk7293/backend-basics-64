@@ -9,9 +9,9 @@ export const handleValidateUserSignIn = async (req, res, next) => {
     if (!email) {
         return res.status(400).json({ success: false, message: "please enter email" })
     }
-    if (!password) {
-        return res.status(400).json({ success: false, message: "please enter password" })
-    }
+    // if (!password) {
+    //     return res.status(400).json({ success: false, message: "please enter password" })
+    // }
     next()
 
 }

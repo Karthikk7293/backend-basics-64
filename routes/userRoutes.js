@@ -12,7 +12,7 @@ router.route('/').get((req, res) => {
 
 router.route('/sign-in').post(handleValidateUserSignIn, createUser)
 router.route('/login').post(loginUser)
-router.route('/update-user/:userId').put(handleUserParams, handleValidateUserSignIn, updateUserDetails)
+router.route('/update-user').put(handleAuth, handleValidateUserSignIn, updateUserDetails)
 router.route('/get-all-users').get(handleAuth, getAllUsers)
 router.route('/user-details/:userId').get(handleUserParams, getUserDetails)
 router.route('/delete-user/:userId').delete(handleUserParams, deleteUser)

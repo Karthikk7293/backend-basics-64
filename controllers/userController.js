@@ -48,7 +48,7 @@ export const createUser = asyncHandler(async (req, res) => {
 
 export const updateUserDetails = asyncHandler(async (req, res) => {
     const data = req.body
-    const userId = req.params.userId
+    const userId = req.user.id
 
     const result = await updateUserDetailsServce(userId, data)
 
