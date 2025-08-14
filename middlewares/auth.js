@@ -24,7 +24,7 @@ export const handleAuth = async (req, res, next) => {
 
 
     } catch (error) {
-        res.status(500).json({ success: false, message: "server error" })
+        res.status(500).json({ success: false, message: "server error from auth middleware" })
     }
 }
 

@@ -132,7 +132,7 @@ export const filterUsers = async () => {
                 $skip: 2
             },
             {
-                $limit: 20
+                $limit: 40
             }
         ])
 

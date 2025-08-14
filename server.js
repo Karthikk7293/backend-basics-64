@@ -3,12 +3,14 @@ import cartRouter from './routes/cartRoutes.js'
 import userRouter from './routes/userRoutes.js'
 import { configDotenv } from 'dotenv'
 import connectDatabase from './config/database.js'
+import cors from 'cors'
 configDotenv()
 connectDatabase()
 
 const app = express()
 
 app.use(express.json()) // to parse the data 
+app.use(cors())
 
 // routes 
 app.use('/api/cart', cartRouter)
