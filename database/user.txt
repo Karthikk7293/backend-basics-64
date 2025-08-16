@@ -1,0 +1,30 @@
+/n [object Object]
+ name:karthik email:karthik@gmail.com password:12345678
+ 
+ name:entry something email:karthik@gmail.com password:qwerty
+ 
+ name:entry something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: something email:karthik@gmail.com password:qwerty
+ 
+ name: new data after dot env email:karthik@gmail.com password:qwerty
