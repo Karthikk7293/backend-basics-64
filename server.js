@@ -12,6 +12,10 @@ const app = express()
 app.use(express.json()) // to parse the data 
 app.use(cors())
 
+app.get('/', (req, res) => {
+    res.send('Hello World')
+})
+
 // routes 
 app.use('/api/cart', cartRouter)
 app.use('/api/user', userRouter)
